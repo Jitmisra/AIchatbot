@@ -1,56 +1,64 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import './Sidebar.css';
-import {assets} from '../../assets/assets'
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useContext, useState } from "react";
+import "./Sidebar.css";
+import { assets } from "../../assets/assets";
+import { Context } from "../../context/Context";
 
 const Sidebar = () => {
-    const[extended, setExtended] = useState(false)
-  return (
-    <div className='sidebar'>
-        <div className="top">
-            <div className="menu">
-             <img onClick={()=>setExtended(prev=>!prev)}src={assets.menu_icon} alt=''/> {/* this will reverse the not of previous state */}
-            </div>
-            <div className="new-chat">
-                <img src={assets.plus_icon} alt='' />
-                {extended?<p>New Chat</p>:null}
-            </div>
-            {extended?
-            <div className="recent">
-            <p className="recent-title">
-                Recent</p>
-            <div className="recent-entry">
+    const [extended, setExtended] = useState(false);
+    const { prevPrompts, onSent, newChat, setRecentPrompt } = useContext(Context);
 
-                <img src={assets.message_icon} alt=''/>
-                <p>What is Rect</p>
+    const loadPrompt = (prompt) => {
+        setRecentPrompt(prompt);
+        onSent(prompt); // Will use the cached response if available
+    };
+
+    return (
+        <div className="sidebar">
+            <div className="top">
+                <div className="menu">
+                    <img
+                        onClick={() => setExtended((prev) => !prev)}
+                        src={assets.menu_icon}
+                        alt="Menu Icon"
+                    />
+                </div>
+                <div className="new-chat" onClick={newChat}>
+                    <img src={assets.plus_icon} alt="New Chat Icon" />
+                    {extended && <p>New Chat</p>}
+                </div>
+                {extended && (
+                    <div className="recent">
+                        <p className="recent-title">Recent</p>
+                        {prevPrompts.map((item, index) => (
+                            <div
+                                key={index}
+                                className="recent-entry"
+                                onClick={() => loadPrompt(item)}
+                            >
+                                <img src={assets.message_icon} alt="Message Icon" />
+                                <p>{item.length > 18 ? `${item.slice(0, 18)}...` : item}</p>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+            <div className="bottom">
+                <div className="bottom-item recent-entry">
+                    <img src={assets.question_icon} alt="Help Icon" />
+                    {extended && <p>Help</p>}
+                </div>
+                <div className="bottom-item recent-entry">
+                    <img src={assets.history_icon} alt="History Icon" />
+                    {extended && <p>Activity</p>}
+                </div>
+                <div className="bottom-item recent-entry">
+                    <img src={assets.setting_icon} alt="Settings Icon" />
+                    {extended && <p>Settings</p>}
+                </div>
             </div>
         </div>
-        :null
-            }
-            
-        </div>
-        <div className="bottom">
-            <div className="bottom-item recent-entry">
-                <img src={assets.question_icon} alt=''/>
-                {extended?<p>Help</p>:null}
-
-            </div>
-            <div className="bottom-item recent-entry">
-                <img src={assets.history_icon} alt=''/>
-                {extended?<p>Activity</p>:null}
-
-            </div>
-            <div className="bottom-item recent-entry">
-                <img src={assets.setting_icon} alt=''/>
-                {extended?<p>Settings</p>:null}
-
-            </div>
-
-        </div>
-   
-    </div>
-  );
+    );
 };
 
 export default Sidebar;

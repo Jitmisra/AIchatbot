@@ -10,4 +10,13 @@
   min-height: 100vh;
   display: flex;
  /* componts sideby side will come becasue display flex  */
+ animation: fadeIn 1.5s;
+}
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }
