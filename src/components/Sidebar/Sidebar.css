@@ -1,19 +1,33 @@
 .sidebar{
-    min-height: 100vh;
+    min-height: 90vh;
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #f0f4f9;
+    background-color: #FFFFFF;
     padding: 25px 15px;
+    padding-right: 55px;
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 17px 40px 4px rgba(112, 144, 176, 0.11);
 
 }
 .sidebar img{
     width: 20px;
 }
-.sidebar menu{
+.sidebar .CritiAI{
     display: block;
     margin-left: 10px;
-    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+   
+   
+}
+.sidebar .CritiAI span{
+    color: #4A25E1;
+    font-size: 24px;
+    font-weight: bold;
    
    
 }
@@ -25,11 +39,13 @@
     align-items: center;
     gap: 10px;
     padding: 10px 15px;
-    background-color: #e6eaf1;
+    background: linear-gradient(15deg, #4A25E1 26.3%, #7B5AFF 86.4%);
     border-radius: 50px;
     font-size: 14px;
-    color: grey;
+    color: #ffffff;
     cursor: pointer;
+    box-shadow: 0px 21px 27px -10px rgba(96, 60, 255, 0.48);
+
 }
 
 .sidebar .recent{

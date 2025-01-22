@@ -12,7 +12,7 @@ export const Main = () => {
   return (
     <div className='main'>
         <div className="nav">
-            <p>Gemini</p>
+            <p>20° C</p>
             <img src={assets.user_icon}/>
 
         </div>
@@ -21,24 +21,25 @@ export const Main = () => {
             <>
             <div className="greet">
                 <p><span>Hello, Agnik</span></p>
-                <p>How Can I help you Today?</p>
+                {/* <p>How Can I help you Today?</p> */}
             </div>
             <div className="cards">
                 <div className="card">
-                    <p>Suggest beautiful place to see </p>
-                    <img src={assets.compass_icon}/>
+                    <p>Suggest beautiful place to see 🙂 </p>
+                    
+                    <img className='card-circle' src={assets.compass_icon}/>
                 </div>
                 <div className="card">
-                    <p>Suggest beautiful place to see </p>
-                    <img src={assets.bulb_icon}/>
+                    <p>Suggest some tips 💡</p>
+                    <img className='card-circle' src={assets.bulb_icon}/>
                 </div>
                 <div className="card">
-                    <p>Suggest beautiful place to see </p>
-                    <img src={assets.message_icon}/>
+                    <p>Learn new language📝 </p>
+                    <img className='card-circle' src={assets.message_icon}/>
                 </div>
                 <div className="card">
-                    <p>Suggest beautiful place to see </p>
-                    <img src={assets.code_icon}/>
+                    <p>Solve Coding problems🧑🏻‍💻 </p>
+                    <img className='card-circle' src={assets.code_icon}/>
                 </div>
             </div>
 
@@ -68,18 +69,17 @@ export const Main = () => {
             }
             
             <div className="main-bottom">
+            <div className="search-box2">
                 <div className="search-box">
                     <input onChange={(e)=>setInput(e.target.value)} value={input} type="text" placeholder='🧠 Whats on your mind...'/>
-                    <div>
-                        <img src={assets.gallery_icon} alt=""/>
-                        <img src={assets.mic_icon} alt=""/>
-
-                        {input?<img onClick={()=>onSent()} src={assets.send_icon} alt=""/>:null}
-
-                    </div>
+                    
 
                 </div>
-                <p className='bottom-info'>Gemini may display inappropriate info.</p>
+                <div className="Submit" onClick={()=>onSent()}>
+                             <p>Submit</p>
+                        </div>
+            </div>
+                <p className='bottom-info'>CritiAI may display inappropriate info.</p>
                 
             </div>
         </div>
